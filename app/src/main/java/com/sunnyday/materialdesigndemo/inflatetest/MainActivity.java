@@ -1,12 +1,12 @@
-package com.sunnyday.materialdesigndemo;
+package com.sunnyday.materialdesigndemo.inflatetest;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import com.sunnyday.materialdesigndemo.R;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
-import com.sunnyday.materialdesigndemo.adapter.TestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
