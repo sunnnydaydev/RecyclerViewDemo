@@ -2,7 +2,7 @@
 <android.support.v7.widget.LinearLayoutCompat
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <android.support.v7.widget.AppCompatTextView
             android:id="@+id/atv_text"
@@ -12,6 +12,4 @@
             android:gravity="center"
             android:textSize="18sp"
             android:textStyle="bold"/>
-
-
 </android.support.v7.widget.LinearLayoutCompat>

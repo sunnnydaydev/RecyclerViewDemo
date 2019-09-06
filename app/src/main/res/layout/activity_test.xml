@@ -8,5 +8,4 @@
         tools:context=".inflatetest.TestActivity"
         android:id="@+id/layout_root"
         android:orientation="horizontal">
-
 </android.support.v7.widget.LinearLayoutCompat>
