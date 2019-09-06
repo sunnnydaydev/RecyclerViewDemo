@@ -26,8 +26,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     /**
      * ViewHolder 创建时，这个方法回调。
-     *
-     * */
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -36,9 +35,8 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     }
 
     /**
-     *
      * 当绑定ViewHolder 时这个方法回调。
-     * */
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
@@ -47,7 +45,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     /**
      * RecyclerView  item数目
-     * */
+     */
     @Override
     public int getItemCount() {
         return mList == null ? 0 : mList.size(); // 三目运算，非空处理，避免空指针。
@@ -57,11 +55,11 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     /**
      * 提供ViewHolder
      */
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final AppCompatTextView text;
 
-        public MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.atv_text);
         }
