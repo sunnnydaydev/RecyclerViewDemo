@@ -59,7 +59,8 @@ public class MyRecyclerAdapterWrapper extends RecyclerView.Adapter<MyRecyclerAda
     }
 
     /**
-     * 重写getItemViewType 控制不同类型条目的展示
+     * @function 重写getItemViewType 控制不同类型条目的展示
+     * @param position
      * <p>
      * ps：不重写时默认返回0代表recycler view 只有一种条目（默认的0其实也就是一种类型表示）
      */
