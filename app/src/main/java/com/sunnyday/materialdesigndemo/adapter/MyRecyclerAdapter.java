@@ -24,12 +24,19 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         mList = list;
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
     /**
      * ViewHolder 创建时，这个方法回调。
+     *
+     * @param viewGroup 容器
+     * @param viewType  条目类型，默认一种类型条目
      */
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View mView = LayoutInflater.from(mContext).inflate(R.layout.layout_recyclerview_item, viewGroup, false);//最后一个参数必须为false
         return new MyViewHolder(mView);// 吧view传递给ViewHolder
     }

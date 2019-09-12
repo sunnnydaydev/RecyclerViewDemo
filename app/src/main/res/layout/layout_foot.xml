@@ -5,10 +5,10 @@
         android:layout_height="wrap_content">
 
     <TextView
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="我是head布局"
+            android:text="我是Foot布局"
             android:gravity="center"
             android:textColor="#ffffff"
             android:textSize="18sp"/>

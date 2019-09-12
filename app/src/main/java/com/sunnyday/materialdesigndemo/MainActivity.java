@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         // 给recycler view 设置Adapter
         MyRecyclerAdapterWrapper myRecyclerAdapterWrapper = new MyRecyclerAdapterWrapper(mAdapter);
-        myRecyclerAdapterWrapper.addFootView(View.inflate(this, R.layout.layout_head, null));
-        myRecyclerAdapterWrapper.addHeadView(View.inflate(this, R.layout.layout_head, null));
 
         mRecyclerView.setAdapter(myRecyclerAdapterWrapper);
     }
