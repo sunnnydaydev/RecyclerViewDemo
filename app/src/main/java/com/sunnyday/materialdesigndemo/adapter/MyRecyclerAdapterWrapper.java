@@ -50,8 +50,8 @@ public class MyRecyclerAdapterWrapper extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
 
-        if (position == 0 || position == myRecyclerAdapter.getItemCount() + 1) { // 索引为
-
+        if (position == 0 || position == myRecyclerAdapter.getItemCount() + 1) {
+            // 索引为 0和最后一个条目时 加载相应的布局
         } else {
             if (viewHolder instanceof MyRecyclerAdapter.MyViewHolder) {
                 myRecyclerAdapter.onBindViewHolder((MyRecyclerAdapter.MyViewHolder) viewHolder, position - 1);

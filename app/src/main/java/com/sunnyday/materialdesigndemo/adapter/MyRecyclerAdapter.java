@@ -32,32 +32,42 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
      * ViewHolder 创建时，这个方法回调。
      *
      * @param viewGroup 容器
-     * @param viewType  条目类型，默认一种类型条目
+     * @param viewType  条目类型
      */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View mView = LayoutInflater.from(mContext).inflate(R.layout.layout_recyclerview_item, viewGroup, false);//最后一个参数必须为false
+        //重要事说三遍：最后一个参数必须为false、最后一个参数必须为false、最后一个参数必须为false
+        View mView = LayoutInflater.from(mContext).inflate(R.layout.layout_recyclerview_item, viewGroup, false);
         return new MyViewHolder(mView);// 吧view传递给ViewHolder
     }
 
     /**
-     * 当绑定ViewHolder 时这个方法回调。
+     * 当绑定ViewHolder 时这个方法回调
+     * @param myViewHolder 自定义的ViewHolder
+     *                     
      */
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.text.setText(mList.get(i));
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
+        myViewHolder.text.setText(mList.get(position));
     }
 
     /**
-     * RecyclerView  item数目
+     * RecyclerView 的item数目
      */
     @Override
     public int getItemCount() {
         return mList == null ? 0 : mList.size(); // 三目运算，非空处理，避免空指针。
     }
 
+    /**
+     * RecyclerView的条目类型 默认为一种类型
+     * */
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
 
     /**
      * 提供ViewHolder
