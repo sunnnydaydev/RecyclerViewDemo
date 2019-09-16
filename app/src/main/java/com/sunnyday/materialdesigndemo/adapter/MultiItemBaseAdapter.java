@@ -11,6 +11,7 @@ import java.util.List;
  */
 public abstract class MultiItemBaseAdapter<T> extends BaseAdapter<T> {
 
+
     protected MultiItemTypeSupport<T> mMultiItemTypeSupport;
 
     public MultiItemBaseAdapter(Context context, List<T> data, MultiItemTypeSupport<T> multiItemTypeSupport) {
