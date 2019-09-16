@@ -5,11 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 
+import android.widget.TextView;
 import android.widget.Toast;
+import com.sunnyday.materialdesigndemo.adapter.BaseAdapter;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapterWrapper;
 
@@ -48,7 +51,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         // 给recycler view 设置Adapter
         MyRecyclerAdapterWrapper myRecyclerAdapterWrapper = new MyRecyclerAdapterWrapper(mAdapter);
 
-        mRecyclerView.setAdapter(mAdapter);
+      //  mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.setAdapter(new BaseAdapter(this,R.layout.layout_recyclerview_item,mList) {
+            @Override
+            public void convert(BaseAdapter.BaseViewHolder baseViewHolder, int position) {
+               AppCompatTextView text = baseViewHolder.getView(R.id.atv_text);
+               text.setText("万能适配器："+position);
+            }
+        });
+
+
         // 滑动监听
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean isSlide2Up = false;
@@ -85,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
         refreshLayout.setOnRefreshListener(this);// 下拉刷新
-        refreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);//刷新时进度条颜色变换
+        refreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);//刷新时进度条颜色变换，转一圈颜色变化一种
     }
 
     /**

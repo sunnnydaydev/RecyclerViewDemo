@@ -69,6 +69,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         return super.getItemViewType(position);
     }
 
+
     /**
      * 提供ViewHolder
      */
