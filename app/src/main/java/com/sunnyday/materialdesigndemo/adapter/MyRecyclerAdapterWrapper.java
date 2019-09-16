@@ -38,8 +38,10 @@ public class MyRecyclerAdapterWrapper extends RecyclerView.Adapter<RecyclerView.
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
         if (viewType == TYPE_HEAD) {
+             //TODO headView 的动态添加，没添加时使用默认的
             return new HeadViewHolder(LayoutInflater.from(myRecyclerAdapter.getContext()).inflate(R.layout.layout_head, viewGroup, false));
         } else if (viewType == TYPE_FOOT) {
+            //TODO footView 的动态添加，没添加时使用默认的
             return new FootViewHolder(LayoutInflater.from(myRecyclerAdapter.getContext()).inflate(R.layout.layout_foot, viewGroup, false));
         } else {
             return myRecyclerAdapter.onCreateViewHolder(viewGroup, viewType);
