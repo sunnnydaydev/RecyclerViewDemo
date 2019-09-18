@@ -146,4 +146,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mAdapter.notifyDataSetChanged();
         Toast.makeText(this, "刷新数据成功", Toast.LENGTH_SHORT).show();
     }
+
+    public void doClick(View view) {
+        mList.remove(0);
+        mAdapter.notifyItemRemoved(0);
+    }
 }
