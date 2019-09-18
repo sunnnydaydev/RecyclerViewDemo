@@ -1,17 +1,20 @@
 package com.sunnyday.materialdesigndemo;
 
+import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.*;
 
 
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 import com.sunnyday.materialdesigndemo.adapter.BaseAdapter;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapterWrapper;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private List<String> mList;
     private MyRecyclerAdapter mAdapter;
     private SwipeRefreshLayout refreshLayout;
+    private RecyclerView.LayoutManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +45,26 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private void initData() {
         // recycler view 的数据
         mList = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 60; i++) {
             mList.add("item" + i);
         }
 
         mAdapter = new MyRecyclerAdapter(mList, this);
-        //给recycler view 设置布局管理器
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        // 给recycler view 设置Adapter
-        MyRecyclerAdapterWrapper myRecyclerAdapterWrapper = new MyRecyclerAdapterWrapper(mAdapter);
+        manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
-      //  mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(manager);
 
-        mRecyclerView.setAdapter(new BaseAdapter(this,R.layout.layout_recyclerview_item,mList) {
-            @Override
-            public void convert(BaseAdapter.BaseViewHolder baseViewHolder, int position) {
-               AppCompatTextView text = baseViewHolder.getView(R.id.atv_text);
-               text.setText("万能适配器："+position);
-            }
-        });
+
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 1));
+        mRecyclerView.setAdapter(mAdapter);
+
+//        mRecyclerView.setAdapter(new BaseAdapter(this,R.layout.layout_recyclerview_item,mList) {
+//            @Override
+//            public void convert(BaseAdapter.BaseViewHolder baseViewHolder, int position) {
+//               AppCompatTextView text = baseViewHolder.getView(R.id.atv_text);
+//               text.setText("万能适配器："+position);
+//            }
+//        });
 
 
         // 滑动监听
