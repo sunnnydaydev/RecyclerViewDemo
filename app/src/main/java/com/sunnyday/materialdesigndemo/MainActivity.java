@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.*;
 
 
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.flexbox.FlexDirection;
@@ -18,6 +19,9 @@ import com.google.android.flexbox.JustifyContent;
 import com.sunnyday.materialdesigndemo.adapter.BaseAdapter;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapterWrapper;
+import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInDownAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 
 import java.util.ArrayList;
@@ -56,7 +60,18 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 1));
+       // mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setItemAnimator(new ScaleInAnimator());//使用第三方
         mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnClickListener(new MyRecyclerAdapter.OnClickListener() {
+            @Override
+            public void clicked(View view, int position) {
+                Toast.makeText(MainActivity.this, "点击"+position, Toast.LENGTH_SHORT).show();
+                mList.remove(position);
+                mAdapter.notifyItemChanged(position);
+            }
+        });
 
 //        mRecyclerView.setAdapter(new BaseAdapter(this,R.layout.layout_recyclerview_item,mList) {
 //            @Override

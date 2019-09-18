@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created by sunnyDay on 2019/9/4 14:58
  */
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder> {
+    private OnClickListener mOnClickListener;
     private List<String> mList;
     private Context mContext;
 
@@ -44,13 +46,19 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     /**
      * 当绑定ViewHolder 时这个方法回调
+     *
      * @param myViewHolder 自定义的ViewHolder
-     *                     
      */
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int position) {
         myViewHolder.text.setText(mList.get(position));
+        myViewHolder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnClickListener.clicked(v, position);
+            }
+        });
     }
 
     /**
@@ -63,7 +71,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     /**
      * RecyclerView的条目类型 默认为一种类型
-     * */
+     */
     @Override
     public int getItemViewType(int position) {
         return super.getItemViewType(position);
@@ -76,10 +84,20 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final AppCompatTextView text;
+        private final LinearLayoutCompat layout;
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.atv_text);
+            layout = itemView.findViewById(R.id.ll_layout);
         }
+    }
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        mOnClickListener = onClickListener;
+    }
+
+    public interface OnClickListener {
+        void clicked(View view, int position);
     }
 }
