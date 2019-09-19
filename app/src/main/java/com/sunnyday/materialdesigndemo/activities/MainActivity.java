@@ -1,6 +1,5 @@
-package com.sunnyday.materialdesigndemo;
+package com.sunnyday.materialdesigndemo.activities;
 
-import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,18 +9,10 @@ import android.support.v7.widget.*;
 
 
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexWrap;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
-import com.sunnyday.materialdesigndemo.adapter.BaseAdapter;
+import com.sunnyday.materialdesigndemo.R;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
-import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapterWrapper;
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInDownAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 
 import java.util.ArrayList;
