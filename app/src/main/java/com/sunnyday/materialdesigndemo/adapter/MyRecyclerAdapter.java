@@ -18,12 +18,18 @@ import java.util.List;
  */
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder> {
     private OnClickListener mOnClickListener;
+
+
     private List<String> mList;
     private Context mContext;
 
     public MyRecyclerAdapter(List<String> list, Context context) {
         mContext = context;
         mList = list;
+    }
+
+    public List<String> getmList() {
+        return mList;
     }
 
     public Context getContext() {

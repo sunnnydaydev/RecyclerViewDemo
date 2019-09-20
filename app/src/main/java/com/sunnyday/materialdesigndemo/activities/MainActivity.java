@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.support.v7.widget.*;
 
 
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Toast;
 import com.sunnyday.materialdesigndemo.R;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
+import com.sunnyday.materialdesigndemo.touchhelper.MyTouchHelper;
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
 
 
@@ -54,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
        // mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setItemAnimator(new ScaleInAnimator());//使用第三方
         mRecyclerView.setAdapter(mAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new MyTouchHelper(mAdapter));
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
 
         mAdapter.setOnClickListener(new MyRecyclerAdapter.OnClickListener() {
             @Override
