@@ -9,6 +9,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.sunnyday.materialdesigndemo.adapter.MyRecyclerAdapter;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by sunnyDay on 2019/9/20 17:21

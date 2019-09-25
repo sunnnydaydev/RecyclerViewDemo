@@ -52,23 +52,24 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mRecyclerView.setLayoutManager(manager);
 
 
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 1));
-       // mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setItemAnimator(new ScaleInAnimator());//使用第三方
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 1));// 系统默认分割线（高版本）
+        mRecyclerView.setItemAnimator(new ScaleInAnimator());//使用第三方的动画
         mRecyclerView.setAdapter(mAdapter);
 
+        // rv的拖拽侧滑
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new MyTouchHelper(mAdapter));
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
+//        点击事件
+//        mAdapter.setOnClickListener(new MyRecyclerAdapter.OnClickListener() {
+//            @Override
+//            public void clicked(View view, int position) {
+//                Toast.makeText(MainActivity.this, "点击"+position, Toast.LENGTH_SHORT).show();
+//                mList.remove(position);
+//                mAdapter.notifyItemChanged(position);
+//            }
+//        });
 
-        mAdapter.setOnClickListener(new MyRecyclerAdapter.OnClickListener() {
-            @Override
-            public void clicked(View view, int position) {
-                Toast.makeText(MainActivity.this, "点击"+position, Toast.LENGTH_SHORT).show();
-                mList.remove(position);
-                mAdapter.notifyItemChanged(position);
-            }
-        });
 
 //        mRecyclerView.setAdapter(new BaseAdapter(this,R.layout.layout_recyclerview_item,mList) {
 //            @Override

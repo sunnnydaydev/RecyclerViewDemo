@@ -62,7 +62,10 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         myViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mOnClickListener.clicked(v, position);
+                if (mOnClickListener!=null){
+                    mOnClickListener.clicked(v, position);
+                }
+
             }
         });
     }
