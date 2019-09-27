@@ -15,6 +15,8 @@ import java.util.List;
  * Created by sunnyDay on 2019/9/20 17:21
  * <p>
  * 侧滑 拖拽的实现
+ * 1、实现侧滑删除
+ * 2、实现拖动到指定位置
  */
 public class MyTouchHelper extends ItemTouchHelper.Callback {
 
@@ -43,8 +45,10 @@ public class MyTouchHelper extends ItemTouchHelper.Callback {
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
         int fromItem = viewHolder.getAdapterPosition();
         int toItem = viewHolder1.getAdapterPosition();
-        Collections.swap(mRecyclerAdapter.getmList(), fromItem, toItem);
-        mRecyclerAdapter.notifyItemRangeRemoved(fromItem, toItem);
+
+        String prev = mRecyclerAdapter.getmList().remove(fromItem);//删除长摁位置的条目，保存下删除的条目。
+        mRecyclerAdapter.getmList().add(toItem > fromItem ? toItem - 1 : toItem, prev);// 吧删除的条目添加到拖动停止的位置
+        mRecyclerAdapter.notifyItemMoved(fromItem, toItem);// 通知局部刷新
         return true;
     }
 
