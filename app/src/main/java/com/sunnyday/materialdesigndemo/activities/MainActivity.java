@@ -60,6 +60,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new MyTouchHelper(mAdapter));
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
+        // 支持惯性滑动
+        LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
+        linearSnapHelper.attachToRecyclerView(mRecyclerView);
+
+        // 类似vp效果
+        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
+        pagerSnapHelper.attachToRecyclerView(mRecyclerView);
+
+
+
+
 //        点击事件
 //        mAdapter.setOnClickListener(new MyRecyclerAdapter.OnClickListener() {
 //            @Override
